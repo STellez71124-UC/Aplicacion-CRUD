@@ -39,3 +39,18 @@ function mostrar_evento() {
         `;
     });
 }
+
+function editar_evento(index) {
+    const evento = actividades[index];
+    document.getElementById("titulo").value = evento.que;
+    document.getElementById("informacion").value = evento.como;
+    document.getElementById("horario").value = evento.horario;
+    actividades.splice(index, 1);
+    localStorage.setItem("datoguardado", JSON.stringify(actividades));;
+}
+
+function quitar_evento(index) {
+    actividades.splice(index, 1);
+    mostrar_evento();
+    localStorage.setItem("datoguardado", JSON.stringify(actividades));;
+}
