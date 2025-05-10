@@ -32,8 +32,8 @@ function mostrar_evento() {
                 <h3>${index+1}.- ${evento.que}<br/>
                 < ${evento.cuando} > </h3>
                 <p>${evento.como}</p>
-                <button onclick="quitar_evento(${index})">Eliminar</button>
                 <button onclick="editar_evento(${index})">Editar</button>
+                <button onclick="quitar_evento(${index})">Eliminar</button>
                 </blockquote>
             </li>
         `;
@@ -54,3 +54,15 @@ function quitar_evento(index) {
     mostrar_evento();
     localStorage.setItem("datoguardado", JSON.stringify(actividades));;
 }
+
+function continuarsesion() {
+    if (localStorage.getItem("datoguardado") !== null) {
+    actividades = JSON.parse("datoguardado");
+    mostrar_evento();
+        console.log("Username exists in localStorage");
+    } else {
+        console.log("No existe informacion guardada en Local Storage");
+    }
+}
+
+continuarsesion();
